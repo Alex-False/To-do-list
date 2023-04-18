@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>TaskMaster :3</h1>
+      <nav>
+        <a><p>Home</p></a>
+        <a><p>Archive</p></a>
+      </nav>
+    </header>
+
+    <div class="toDo__container">
+      <h1>To Do List</h1>
+      <div class="toDo__submission">
+        <label for="new-task">Add Item</label>
+        <input id="new-task" type="text">
+        <button id="add-new-item">Submit new task</button>
+      </div>
+      <ul class="incomplete-tasks">
+      </ul>
+    </div>
+
+    <div class="archive__container">
+      <h1>Archive</h1>
+      <ul class="completed-tasks">
+      </ul>
+    </div>
+
+
+    <script src="./index.js"></script>
+  </body>
+</html>
