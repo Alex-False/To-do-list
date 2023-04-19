@@ -1,3 +1,16 @@
+
+function saveListToLocalStorage(list) {
+  localStorage.setItem('todoList', JSON.stringify(list));
+}
+
+function loadListFromLocalStorage() {
+  const storedList = localStorage.getItem('todoList');
+  if (storedList) {
+    return JSON.parse(storedList);
+  }
+  return [];
+}
+
 //Global variable used for unique class names associated with a checkbox and its corresponding list
 var counter = 0;
 
@@ -26,6 +39,13 @@ function addItem() {
   var toDoContainer = document.querySelector(".incomplete-tasks");
   toDoContainer.appendChild(checkbox);
   toDoContainer.appendChild(toDoItem);
+
+
+   // Save the updated list to local storage
+   const listItems = document.querySelectorAll(".incomplete-tasks li");
+   const list = Array.from(listItems).map(item => item.textContent);
+   saveListToLocalStorage(list);
+
 
   //Iterates the global variable counter so each list item has a unique class name
   counter += 2;
@@ -71,4 +91,19 @@ function strikeThrough(event) {
     toDoContainer.appendChild(listItem);
 
   }
+
+  // Save the updated list to local storage
+  const listItems = document.querySelectorAll(".incomplete-tasks li");
+  const list = Array.from(listItems).map(item => item.textContent);
+  saveListToLocalStorage(list);
+
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedList = loadListFromLocalStorage();
+  savedList.forEach((taskText) => {
+    document.getElementById("new-task").value = taskText;
+    addItem();
+  });
+});
